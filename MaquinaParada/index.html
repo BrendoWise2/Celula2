@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Parada de Máquina</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>Parada de Máquina</h1>
+    </header>
+
+    <main>
+        <div class="infos">
+            <label>Nome:
+                <input type="text" id="operator" placeholder="9999 - Seu Nome">
+            </label>
+            <label for="celulas">Equipamento:</label>
+            <select id="celulas">
+                <option value="celula01">Celula 01</option>
+                <option value="celula02">Celula 02</option>
+                <option value="celula03">Celula 03</option>
+                <option value="celula04">Celula 04</option>
+                <option value="celula05">Celula 05</option>
+                <option value="celula06">Celula 06</option>
+                <option value="celula07">Celula 07</option>
+                <option value="celula08">Celula 08</option>
+                <option value="celula09">Celula 09</option>
+                <option value="celula10">Celula 10</option>
+                <option value="celula11">Celula 11</option>
+                <option value="celula12">Celula 12</option>
+                <option value="celula13">Celula 13</option>
+                <option value="celula14">Celula 14</option>
+                <option value="celula15">Celula 15</option>
+                <option value="celula16">Celula 16</option>
+                <option value="celula17">Celula 17</option>
+                <option value="celula18">Celula 18</option>
+                <option value="celula19">Celula 19</option>
+            </select>
+        </div>
+
+        <section class="stop-register">
+            <div>
+                <h4>Início da Parada:</h4>
+                <input type="time" id="startHour">
+                <input type="date" id="startDate">
+            </div>
+            <div>
+                <h4>Fim da Parada:</h4>
+                <input type="time" id="endHour">
+                <input type="date" id="endDate">
+            </div>
+            <div>
+                <h4>Tempo Total:</h4>
+                <input type="time" id="totalTime">
+            </div>
+
+            <button id="salvarButton">Salvar</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

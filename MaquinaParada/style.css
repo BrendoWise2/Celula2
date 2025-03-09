@@ -1,0 +1,51 @@
+* {
+    margin: auto;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    padding: 30px;
+}
+
+main {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.infos label {
+    margin-left: 20px;
+}
+
+main button {
+    margin-top: 30px;
+}
+
+#startButton {
+    display: flex;
+}
+
+.stop-register {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stop-register div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stop-register input {
+    margin-left: 10px;
+}
