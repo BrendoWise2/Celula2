@@ -129,6 +129,9 @@ td:last-child button:hover {
 }
 
 .times {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -137,17 +140,37 @@ td:last-child button:hover {
     color: var(--color-white);
     text-align: center;
     font-size: 16pt;
-    padding: 12px;
+    padding: 25px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
     z-index: 10;
 }
 
+.time-div {
+    margin-right: 430px;
+}
 
 .times p {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
+}
+
+.deletar-registros button {
+    background-color: var(--color-table-header-font);
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 16pt;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+    font-weight: bold;
+
+}
+
+.deletar-registros button:hover {
+    background-color: #F0E68C;
+    transition: background-color 0.3s ease;
+
 }
 
 @media only screen and (max-width: 768px) {

@@ -34,5 +34,10 @@ public class CelulaServiceImpl implements CelulaService {
     public List<Celula> listar() {
         return celulaRepository.findAll();
     }
+
+    @Override
+    public void deletarTodos() {
+       celulaRepository.deleteAll();
+    }
     
 }

@@ -62,6 +62,7 @@ search.addEventListener('keyup', () => {
     let expression = search.value.toLowerCase();
 
     if (expression.length === 1) {
+
         return;
     }
 
