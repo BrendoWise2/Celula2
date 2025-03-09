@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img class="figure__image" src="https://www.jf.ind.br/imagens/informacoes/usinagem-torno-cnc-01.webp" alt="Celula">
                         </figure>
                     </td>
-                    <td class="products-header__cell">${celula.operatorName}</td>
+                    <td class="products-header__cell">${celula.celulaSelecionada}</td>
                     <td class="products-header__cell">${celula.totalTime}</td>
                     <td class="products-header__cell">${celula.startDate}</td>
                     <td class="products-header__cell">
@@ -65,23 +65,36 @@ search.addEventListener('keyup', () => {
         return;
     }
 
-    let lines = tabelaCelulas.getElementsByTagName('tr')
-
-
+    let lines = tabelaCelulas.getElementsByTagName('tr');
+    let totalSegundos = 0;  // Recalcular totalSegundos a cada pesquisa
 
     for (let position in lines) {
         if (true === isNaN(position)) {
             continue;
         }
-        let lineContent = lines[position].innerHTML.toLowerCase();
-        if (true === lineContent.includes(expression)) {
-            lines[position].style.display = '';
+
+        const line = lines[position];  // Acessa a linha usando 'position'
+        let lineContent = line.innerHTML.toLowerCase();
+
+        if (lineContent.includes(expression)) {
+            line.style.display = '';  // Exibe a linha
+
+            // Pega o tempo da terceira célula (coluna) da linha
+            const timeCell = line.querySelector('.products-header__cell:nth-child(3)');
+            const time = timeCell ? timeCell.textContent : null;
+
+            if (time) {
+                totalSegundos += totalEmSegundos(time);
+            }
         } else {
-            lines[position].style.display = 'none';
+            line.style.display = 'none';  // Oculta a linha
         }
     }
 
-})
+    // Atualiza o total de tempo após a pesquisa
+    totalTimeCell.textContent = segundosParaTempo(totalSegundos);
+});
+
 
 //converte tempo "hh:mm:ss" em segundos
 function totalEmSegundos(time) {
@@ -97,3 +110,5 @@ function segundosParaTempo(totalSeconds) {
     const seconds = totalSeconds % 60;
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
+
+
