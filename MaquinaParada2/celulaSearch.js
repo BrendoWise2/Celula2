@@ -1,5 +1,6 @@
 const search = document.getElementById('search-celula');
 const tabelaCelulas = document.getElementById('tabela-celulas');
+let totalTimeCell = document.getElementById('total-time');
 
 document.addEventListener('DOMContentLoaded', function () {
     fetch("http://localhost:8080/celula/mostrar", {
@@ -14,9 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const tbody = document.querySelector('.products__table tbody');
             tbody.innerHTML = "";
 
+            let totalSegundos = 0;
+
+
             if (Array.isArray(data)) {
                 data.forEach(celula => {
                     console.log("Celula:", celula);
+
+                    if (celula.totalTime) {
+                        totalSegundos += totalEmSegundos(celula.totalTime);
+                    }
 
                     const row = document.createElement("tr");
                     row.classList.add("products-table__row");
@@ -36,10 +44,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
 
                     tbody.append(row);
+
                 });
+                console.log("Elemento totalTimeCell:", totalTimeCell);
+                totalTimeCell.textContent = segundosParaTempo(totalSegundos);
+
             } else {
                 console.error("Erro: A resposta da API não é uma lista!", data);
             }
+
+
         })
         .catch(error => console.error("Erro ao buscar dados:", error));
 });
@@ -68,3 +82,18 @@ search.addEventListener('keyup', () => {
     }
 
 })
+
+//converte tempo "hh:mm:ss" em segundos
+function totalEmSegundos(time) {
+    const [hours, minutes, seconds] = time.split(":").map(num => parseInt(num));
+    return hours * 3600 + minutes * 60 + seconds;
+}
+
+// Função para converter segundos para o formato "hh:mm:ss"
+function segundosParaTempo(totalSeconds) {
+    const hours = Math.floor(totalSeconds / 3600);
+    totalSeconds %= 3600;
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
