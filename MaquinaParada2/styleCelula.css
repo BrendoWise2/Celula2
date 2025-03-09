@@ -33,6 +33,19 @@ body {
     color: var(--color-table-header-font);
 }
 
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.search label,
+input {
+    margin-right: 10px;
+    font-size: 12pt;
+}
+
 .main__products {
     height: 80vh;
     overflow-y: auto;
@@ -102,6 +115,21 @@ td:last-child button:active {
     transition: 0.3s
 }
 
+
+.times {
+    background-color: var(--color-table-header);
+    font-size: 15pt;
+    color: var(--color-table-header-font);
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.times p {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
 
 @media only screen and (max-width:1000px) {
     .main__products {
