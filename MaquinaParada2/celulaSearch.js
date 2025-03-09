@@ -2,6 +2,8 @@ const search = document.getElementById('search-celula');
 const tabelaCelulas = document.getElementById('tabela-celulas');
 let totalTimeCell = document.getElementById('total-time');
 
+const bntDelete = document.getElementById('bnt-delete');
+
 document.addEventListener('DOMContentLoaded', function () {
     fetch("http://localhost:8080/celula/mostrar", {
         method: "GET",
@@ -112,4 +114,27 @@ function segundosParaTempo(totalSeconds) {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
+
+bntDelete.addEventListener('click', () => {
+    if (confirm("Tem certeza que deseja deletar todos os registros?")) {
+        fetch("http://localhost:8080/celula/deletar-todos", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("Todos os registros foram deletados com sucesso!");
+                } else {
+                    alert("Erro ao deletar os registros!");
+                }
+            })
+
+            .catch(error => {
+                console.error("Erro ao tentar deletar os registros:", error);
+                alert("Ocorreu um erro ao tentar deletar os registros.");
+            });
+    }
+});
 
