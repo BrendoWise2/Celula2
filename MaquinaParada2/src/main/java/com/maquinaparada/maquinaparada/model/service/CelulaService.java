@@ -11,5 +11,6 @@ public interface CelulaService {
     void atualizar(Celula celula);
     void deletar(Celula celula);
     List<Celula> listar();
+    void deletarTodos();
 
 }

@@ -13,6 +13,7 @@ import com.maquinaparada.maquinaparada.model.service.CelulaService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,6 +39,12 @@ public class CelulaController {
     @GetMapping("/mostrar")
     public List<Celula> listar() {
         return celulaRepository.findAll();
+    }
+
+    @DeleteMapping("/deletar-todos")
+    public String deletarTodos(){
+        celulaService.deletarTodos();
+        return "Todos os registro deletado com sucesso!";
     }
     
 }
