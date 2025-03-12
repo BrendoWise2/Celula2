@@ -6,29 +6,36 @@ let startDate, endDate, ge;
 
 
 btnSalvar.addEventListener('click', function () {
-    salvarEquipamento();
-    btnSalvar.disabled = true;
-    setInterval(disabledBnt, 4000);
+
+    operatorName = document.getElementById('operator').value.trim();
+    celulaSelecionada = document.getElementById('celulas').value.trim();
+    startHour = document.getElementById('startHour').value.trim();
+    endHour = document.getElementById('endHour').value.trim();
+    startDate = document.getElementById('startDate').value.trim();
+    endDate = document.getElementById('endDate').value.trim();
+    totalTime = document.getElementById('totalTime').value.trim();
+
+    // Agora sim: valida
+    if (!operatorName || !celulaSelecionada || !startHour || !endHour || !startDate || !endDate || !totalTime) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    if (confirm("Voce realmente deseja salvar!")) {
+        salvarEquipamento();
+        btnSalvar.disabled = true;
+        setInterval(disabledBnt, 4000);
+    }
+
 
 });
 
 function disabledBnt() {
-    btnSalvar.disabled = false;
+    btnSalvar.disabled = true;
 }
 
 
 function salvarEquipamento() {
-    operatorName = document.getElementById('operator').value;
-    celulaSelecionada = document.getElementById('celulas').value;
-
-    startHour = document.getElementById('startHour').value;
-    endHour = document.getElementById('endHour').value;
-
-    startDate = document.getElementById('startDate').value;
-    endDate = document.getElementById('endDate').value;
-
-    totalTime = document.getElementById('totalTime').value;
-
 
     fetch("http://localhost:8080/celula/salvar", {
         headers: {
