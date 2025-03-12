@@ -23,8 +23,7 @@ btnSalvar.addEventListener('click', function () {
 
     if (confirm("Voce realmente deseja salvar!")) {
         salvarEquipamento();
-        btnSalvar.disabled = true;
-        setInterval(disabledBnt, 4000);
+        disabledBnt();
     }
 
 
@@ -32,6 +31,7 @@ btnSalvar.addEventListener('click', function () {
 
 function disabledBnt() {
     btnSalvar.disabled = true;
+    btnSalvar.classList.add('desativado');
 }
 
 

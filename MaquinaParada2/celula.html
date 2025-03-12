@@ -26,7 +26,7 @@
                         <th class="products-header__cell">Parada Total</th>
                         <th class="products-header__cell">Data</th>
                         <th class="products-header__cell">Expandir</th>
-                        <div><label>Procurar: </label><input id="search-celula" type="text"></div>
+                        <div class="search"><label>Procurar: </label><input id="search-celula" type="text"></div>
                     </tr>
                 </thead>
                 <tbody id="tabela-celulas">
@@ -46,6 +46,16 @@
                 </tbody>
             </table>
         </section>
+        <div class="times">
+            <div class="time-div">
+                <p>Tempo Total de Parada: </p>
+                <p id="total-time">02:00:00</p>
+            </div>
+
+            <div class="deletar-registros">
+                <button id="bnt-delete">Deletar Registros</button>
+            </div>
+        </div>
     </main>
     <script src="celulaSearch.js"></script>
 </body>
